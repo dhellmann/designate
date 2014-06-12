@@ -18,8 +18,9 @@ from designate.api.v2.controllers import limits
 from designate.api.v2.controllers import reverse
 from designate.api.v2.controllers import schemas
 from designate.api.v2.controllers import tlds
-from designate.api.v2.controllers import zones
+#from designate.api.v2.controllers import zones
 from designate.api.v2.controllers import blacklists
+from designate.api.v2.controllers import extensions
 
 LOG = logging.getLogger(__name__)
 
@@ -29,9 +30,13 @@ class RootController(object):
     This is /v2/ Controller. Pecan will find all controllers via the object
     properties attached to this.
     """
-    limits = limits.LimitsController()
-    schemas = schemas.SchemasController()
-    reverse = reverse.ReverseController()
+    # limits = limits.LimitsController()
+    # schemas = schemas.SchemasController()
+    # reverse = reverse.ReverseController()
     tlds = tlds.TldsController()
-    zones = zones.ZonesController()
-    blacklists = blacklists.BlacklistsController()
+    # zones = zones.ZonesController()
+    # blacklists = blacklists.BlacklistsController()
+    LOG.debug('ROOT CONTROLLER')
+    zones = extensions.ExtensionController('designate.api.v2.controllers',['zones'])
+    LOG.debug('dir(zones)')
+    LOG.debug(dir(zones))

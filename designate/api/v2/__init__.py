@@ -22,6 +22,7 @@ LOG = logging.getLogger(__name__)
 
 
 def factory(global_config, **local_conf):
+    LOG.debug('CREATIN THE PECAN APP')
     if not cfg.CONF['service:api'].enable_api_v2:
         def disabled_app(environ, start_response):
             status = '404 Not Found'

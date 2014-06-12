@@ -117,6 +117,9 @@ def factory(global_config, **local_conf):
     if len(extensions) > 0:
         extmgr = named.NamedExtensionManager('designate.api.v1.extensions',
                                              names=extensions)
+        LOG.debug('V1 EXTENSIONS')
+        LOG.debug(extmgr.__dict__)
+        LOG.debug(extmgr._names)
         extmgr.map(_register_blueprint)
 
     return app
