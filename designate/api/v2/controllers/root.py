@@ -37,6 +37,7 @@ class RootController(object):
     # zones = zones.ZonesController()
     # blacklists = blacklists.BlacklistsController()
     LOG.debug('ROOT CONTROLLER')
-    zones = extensions.ExtensionController('designate.api.v2.controllers',['zones'])
+    ext = extensions.ExtensionController('designate.api.v2.controllers',
+                                         ['zones'])
     LOG.debug('dir(zones)')
-    LOG.debug(dir(zones))
+    LOG.debug(dir(ext))
